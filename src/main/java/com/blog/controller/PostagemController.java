@@ -3,6 +3,7 @@ package com.blog.controller;
 import com.blog.model.Postagem;
 import com.blog.repository.PostagemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,5 +30,10 @@ public class PostagemController {
     @GetMapping("texto/{texto}")
     public ResponseEntity<List<Postagem>> getByTexto(@PathVariable String texto){
         return ResponseEntity.ok(repository.findAllByTextoContainingIgnoreCase(texto));
+    }
+
+    @PostMapping
+    public ResponseEntity<Postagem> criarPostagem(@RequestBody Postagem postagem) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(postagem));
     }
 }

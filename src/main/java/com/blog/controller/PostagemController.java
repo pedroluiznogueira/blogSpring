@@ -3,11 +3,11 @@ package com.blog.controller;
 import com.blog.model.Postagem;
 import com.blog.repository.PostagemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/postagem")
@@ -22,7 +22,7 @@ public class PostagemController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<String> getById(@PathVariable Long id) {
-        return ResponseEntity.status(HttpStatus.OK).body("Req feita");
+    public Optional<Postagem> getById(@PathVariable Long id) {
+        return postagemRepository.findById(id);
     }
 }

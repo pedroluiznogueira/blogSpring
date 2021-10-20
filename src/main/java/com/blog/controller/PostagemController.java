@@ -32,6 +32,6 @@ public class PostagemController {
 
     @GetMapping("/titulo/{titulo}")
     public ResponseEntity<List<Postagem>> getByTitulo(@PathVariable ("titulo") String titulo) {
-        return new ResponseEntity(postagemRepository.findByTitulo(titulo), HttpStatus.OK);
+        return ResponseEntity.ok(postagemRepository.findAllByTitulo(titulo));
     }
 }

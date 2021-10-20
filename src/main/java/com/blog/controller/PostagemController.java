@@ -2,7 +2,9 @@ package com.blog.controller;
 
 import com.blog.model.Postagem;
 import com.blog.repository.PostagemRepository;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +24,9 @@ public class PostagemController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Postagem> getById(@PathVariable Long id) {
-        return postagemRepository.findById(id);
+    public ResponseEntity<Postagem> getById(@PathVariable Long id) {
+        return postagemRepository.findById(id)
+                .map(resp -> ResponseEntity.ok(resp))
+                .orElse(ResponseEntity.notFound().build());
     }
 }

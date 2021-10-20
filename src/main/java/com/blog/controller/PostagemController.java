@@ -14,12 +14,15 @@ import java.util.List;
 @CrossOrigin("*")
 public class PostagemController {
     @Autowired
-    private PostagemRepository repository;
+    private PostagemRepository postagemRepository;
 
     @GetMapping
     public ResponseEntity<List<Postagem>> GetAll() {
-        return ResponseEntity.ok(repository.findAll());
+        return ResponseEntity.ok(postagemRepository.findAll());
     }
 
     @GetMapping("/{id}")
+    public ResponseEntity<Postagem> getById(@PathVariable ("id") Long id) {
+        return new ResponseEntity(postagemRepository.findById(id), HttpStatus.OK);
+    }
 }

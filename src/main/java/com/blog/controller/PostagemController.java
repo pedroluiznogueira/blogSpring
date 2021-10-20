@@ -22,7 +22,7 @@ public class PostagemController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Postagem> getById(@PathVariable ("id") Long id) {
-        return new ResponseEntity(postagemRepository.findById(id), HttpStatus.OK);
+    public ResponseEntity<String> getById(@PathVariable Long id) {
+        return ResponseEntity.ok("Requisição feita");
     }
 }

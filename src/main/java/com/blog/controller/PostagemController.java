@@ -22,18 +22,4 @@ public class PostagemController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Postagem> GetById(@PathVariable Long id){
-        return repository.findById(id).map(resp -> ResponseEntity.ok(resp))
-                                    .orElse(ResponseEntity.notFound().build());
-    }
-
-    @GetMapping("texto/{texto}")
-    public ResponseEntity<List<Postagem>> getByTexto(@PathVariable String texto){
-        return ResponseEntity.ok(repository.findAllByTextoContainingIgnoreCase(texto));
-    }
-
-    @PostMapping
-    public ResponseEntity<Postagem> criarPostagem(@RequestBody Postagem postagem) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(postagem));
-    }
 }

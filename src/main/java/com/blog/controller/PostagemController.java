@@ -23,6 +23,6 @@ public class PostagemController {
 
     @GetMapping("/{id}")
     public ResponseEntity<String> getById(@PathVariable Long id) {
-        return ResponseEntity.ok("Requisição feita");
+        return ResponseEntity.status(HttpStatus.OK).body("Req feita");
     }
 }

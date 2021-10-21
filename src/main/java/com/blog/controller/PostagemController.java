@@ -44,10 +44,19 @@ public class PostagemController {
         );
     }
 
-    @PostMapping("criar")
+    @PostMapping("/criar")
     public ResponseEntity<Postagem> createPostagem(@RequestBody Postagem postagem) {
         return ResponseEntity.status(
                 HttpStatus.CREATED
+        ).body(
+                postagemRepository.save(postagem)
+        );
+    }
+
+    @PutMapping("/alterar")
+    public ResponseEntity<Postagem> updatePostagem(@RequestBody Postagem postagem) {
+        return ResponseEntity.status(
+                HttpStatus.OK
         ).body(
                 postagemRepository.save(postagem)
         );

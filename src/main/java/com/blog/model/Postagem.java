@@ -1,12 +1,10 @@
 package com.blog.model;
 
-
-
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "tb_postagem")
+@Table(name = "postagem")
 public class Postagem {
 
     @Id
@@ -19,6 +17,20 @@ public class Postagem {
     @Temporal(TemporalType.TIMESTAMP)
     private Date data = new java.sql.Date(System.currentTimeMillis());
 
+    @ManyToOne
+    @JoinColumn(name = "tema_id")
+    private Tema tema;
+
+    public Postagem() {
+    }
+
+    public Postagem(Long id, String titulo, String texto, Date data, Tema tema) {
+        this.id = id;
+        this.titulo = titulo;
+        this.texto = texto;
+        this.data = data;
+        this.tema = tema;
+    }
 
     public Long getId() {
         return id;

@@ -46,7 +46,9 @@ public class PostagemController {
 
     @PostMapping("criar")
     public ResponseEntity<Postagem> createPostagem(@RequestBody Postagem postagem) {
-        return ResponseEntity.ok(
+        return ResponseEntity.status(
+                HttpStatus.CREATED
+        ).body(
                 postagemRepository.save(postagem)
         );
     }

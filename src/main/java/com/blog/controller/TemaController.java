@@ -24,7 +24,13 @@ public class TemaController {
         );
     }
 
-//    @GetMapping
+    @GetMapping("/id/{id}")
+    public ResponseEntity<Tema> getById(@PathVariable ("id") Long id) {
+        return temaRepository.findById(id)
+                .map(resp -> ResponseEntity.ok(resp))
+                .orElse(ResponseEntity.notFound().build());
+    }
+
 //
 //    @GetMapping
 //

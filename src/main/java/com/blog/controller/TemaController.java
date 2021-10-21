@@ -32,7 +32,13 @@ public class TemaController {
     }
 
 //
-//    @GetMapping
+    @GetMapping("/titulo/{descricao}")
+    public ResponseEntity<List<Tema>> getByDescricao(@PathVariable ("descricao") String descricao) {
+        return ResponseEntity.ok(
+                temaRepository.findAllByDescricao(descricao)
+        );
+    }
+
 //
 //    @PostMapping
 //

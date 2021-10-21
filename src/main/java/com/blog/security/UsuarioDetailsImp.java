@@ -10,12 +10,27 @@ public class UsuarioDetailsImp implements UserDetails {
 
     private static final long serialVersionUID = 1L;
 
-    private String username;
+    private String userName;
     private String password;
 
+    public UsuarioDetailsImp() {
+    }
+
     public UsuarioDetailsImp(Usuario usuario) {
-        this.username = usuario.getUsuario();
+        this.userName = usuario.getUsuario();
         this.password = usuario.getSenha();
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
@@ -35,21 +50,21 @@ public class UsuarioDetailsImp implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }

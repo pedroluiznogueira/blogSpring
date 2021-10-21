@@ -49,7 +49,17 @@ public class TemaController {
     }
 
 //
-//    @PutMapping
+    @PutMapping("/alterar")
+    public ResponseEntity<Tema> alterarTema(@RequestBody Tema tema) {
+        return ResponseEntity.status(
+                HttpStatus.OK
+        ).body(
+                temaRepository.save(tema)
+        );
+    }
 //
-//    @DeleteMapping
+    @DeleteMapping("deletar/{id}")
+    public void deletarTema(@PathVariable ("id") Long id) {
+        temaRepository.deleteById(id);
+    }
 }

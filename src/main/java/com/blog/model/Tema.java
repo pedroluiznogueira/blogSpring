@@ -13,7 +13,7 @@ public class Tema {
 
     private String descricao;
 
-    @OneToMany
+    @OneToMany(mappedBy = "tema", cascade = CascadeType.ALL)
     @JoinColumn(name = "tema_id")
     private List<Postagem> postagens;
 

@@ -7,6 +7,8 @@ import java.util.Collection;
 
 public class UsuarioDetailsImp implements UserDetails {
 
+    private static final long serialVersionUID = 1L;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;

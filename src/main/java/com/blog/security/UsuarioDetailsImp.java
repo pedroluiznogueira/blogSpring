@@ -10,27 +10,15 @@ public class UsuarioDetailsImp implements UserDetails {
 
     private static final long serialVersionUID = 1L;
 
-    private String userName;
+    private String username;
     private String password;
 
     public UsuarioDetailsImp() {
     }
 
     public UsuarioDetailsImp(Usuario usuario) {
-        this.userName = usuario.getUsuario();
+        this.username = usuario.getUsuario();
         this.password = usuario.getSenha();
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     @Override

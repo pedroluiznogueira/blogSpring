@@ -41,12 +41,4 @@ public class Tema {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-
-    public List<Postagem> getPostagens() {
-        return postagens;
-    }
-
-    public void setPostagens(List<Postagem> postagens) {
-        this.postagens = postagens;
-    }
 }

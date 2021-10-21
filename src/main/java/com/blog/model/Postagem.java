@@ -63,4 +63,12 @@ public class Postagem {
     public void setDate(Date data) {
         this.data = data;
     }
+
+    public Tema getTema() {
+        return tema;
+    }
+
+    public void setTema(Tema tema) {
+        this.tema = tema;
+    }
 }

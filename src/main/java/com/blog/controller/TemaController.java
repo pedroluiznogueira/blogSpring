@@ -31,7 +31,6 @@ public class TemaController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-//
     @GetMapping("/titulo/{descricao}")
     public ResponseEntity<List<Tema>> getByDescricao(@PathVariable ("descricao") String descricao) {
         return ResponseEntity.ok(
@@ -48,18 +47,17 @@ public class TemaController {
         );
     }
 
-//
     @PutMapping("/alterar")
-    public ResponseEntity<Tema> alterarTema(@RequestBody Tema tema) {
+    public ResponseEntity<Tema> updateTema(@RequestBody Tema tema) {
         return ResponseEntity.status(
                 HttpStatus.OK
         ).body(
                 temaRepository.save(tema)
         );
     }
-//
+
     @DeleteMapping("deletar/{id}")
-    public void deletarTema(@PathVariable ("id") Long id) {
+    public void deleteTema(@PathVariable ("id") Long id) {
         temaRepository.deleteById(id);
     }
 }

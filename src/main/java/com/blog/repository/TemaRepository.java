@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface TemaRepository extends JpaRepository<Tema, Long> {
 
-    public List<Tema> findAllByDescricao(String descricao);
+    public List<Tema> findAllByDescricaoContaining(String descricao);
 }

@@ -39,8 +39,15 @@ public class TemaController {
         );
     }
 
-//
-//    @PostMapping
+    @PostMapping("/criar")
+    public ResponseEntity<Tema> createTema(@RequestBody Tema tema) {
+        return ResponseEntity.status(
+                HttpStatus.CREATED
+        ).body(
+                temaRepository.save(tema)
+        );
+    }
+
 //
 //    @PutMapping
 //

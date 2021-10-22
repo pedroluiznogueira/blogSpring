@@ -17,5 +17,8 @@ public class UsuarioService {
     public Usuario cadastrarUsuario(Usuario usuario) {
         // vamos trabalhar a senha encriptada apartir do BCryptPasswordEncoder da classe BasicSecurityConfig
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+        // encriptando a senha
+        String senhaEncoder = encoder.encode()
     }
 }

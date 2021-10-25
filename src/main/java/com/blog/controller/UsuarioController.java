@@ -1,10 +1,13 @@
 package com.blog.controller;
 
+import com.blog.model.UsuarioLogin;
 import com.blog.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("usuario")
@@ -14,5 +17,10 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-
+    @PostMapping("logar")
+    public ResponseEntity<UsuarioLogin> authentication(@RequestBody Optional<UsuarioLogin> usuarioLogin) {
+        return usuarioService.logar(usuarioLogin)
+                .map(resp -> ResponseEntity.ok(resp))
+                .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+    }
 }

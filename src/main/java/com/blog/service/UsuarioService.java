@@ -3,10 +3,13 @@ package com.blog.service;
 import com.blog.model.Usuario;
 import com.blog.model.UsuarioLogin;
 import com.blog.repository.UsuarioRepository;
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+
+import java.nio.charset.Charset;
 import java.util.Optional;
 
 @Service
@@ -40,12 +43,14 @@ public class UsuarioService {
 
         // Preciso verificar se o tive retorno de um usuário do banco, e verificar se a senha dele é igual à senha do usuário que veio para fazer login
         if (usuario.isPresent()) {
+
             if (
                     encoder.matches(
-                    usuarioLogin.get().getSenha(),
-                    usuario.get().getSenha())
+                        usuarioLogin.get().getSenha(),
+                        usuario.get().getSenha())
             ) {
-
+                String auth = usuarioLogin.get().getUsuario() + ":" + usuarioLogin.get().getSenha();
+                byte[] encodeAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
             }
 
         }

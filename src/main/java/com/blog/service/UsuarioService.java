@@ -44,14 +44,20 @@ public class UsuarioService {
         // Preciso verificar se o tive retorno de um usuário do banco, e verificar se a senha dele é igual à senha do usuário que veio para fazer login
         if (usuario.isPresent()) {
 
-            if (
-                    encoder.matches(
-                        usuarioLogin.get().getSenha(),
-                        usuario.get().getSenha())
-            ) {
+            if (encoder.matches(usuarioLogin.get().getSenha(), usuario.get().getSenha())) {
+
+                // string para gerar token
                 String auth = usuarioLogin.get().getUsuario() + ":" + usuarioLogin.get().getSenha();
+
+                // gerando o token
                 byte[] encodeAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
+
+                // concatendo autorização + token
                 String authHeader = "Basic " + new String(encodeAuth);
+
+                // settando token e nome do usuarioLogin à ser retornado, já que o nome de usuário é mesmo já que passou em todas as verificações
+                usuarioLogin.get().setToken(authHeader);
+                usuarioLogin.get().setNome(usuario.get().getNome());
 
                 return usuarioLogin;
             }

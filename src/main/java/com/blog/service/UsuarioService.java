@@ -37,6 +37,18 @@ public class UsuarioService {
 
         // Acessando o usuário que contém aquela senha à ser verificada pelo nome de usuário
         Optional<Usuario> usuario = usuarioRepository.findByUsuario(usuarioLogin.get().getUsuario());
+
+        // Preciso verificar se o tive retorno de um usuário do banco, e verificar se a senha dele é igual à senha do usuário que veio para fazer login
+        if (usuario.isPresent()) {
+            if (
+                    encoder.matches(
+                    usuarioLogin.get().getSenha(),
+                    usuario.get().getSenha())
+            ) {
+
+            }
+
+        }
     }
 
 

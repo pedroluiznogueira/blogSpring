@@ -24,6 +24,7 @@ public class UsuarioService {
         // settando essa senha encoded na senha do usuario
         usuario.setSenha(senhaEncoder);
 
-        return usuario;
+        // salvando o usuário no banco de dados
+        return usuarioRepository.save(usuario);
     }
 }

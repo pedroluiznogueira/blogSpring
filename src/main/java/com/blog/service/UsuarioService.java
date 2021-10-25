@@ -1,6 +1,7 @@
 package com.blog.service;
 
 import com.blog.model.Usuario;
+import com.blog.model.UsuarioLogin;
 import com.blog.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -14,6 +15,7 @@ public class UsuarioService {
     @Autowired
     UsuarioRepository usuarioRepository;
 
+    // cadastrando um usuário
     public Usuario cadastrarUsuario(Usuario usuario) {
         // vamos trabalhar a senha encriptada apartir do BCryptPasswordEncoder da classe BasicSecurityConfig
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -27,4 +29,12 @@ public class UsuarioService {
         // salvando o usuário no banco de dados
         return usuarioRepository.save(usuario);
     }
+
+    // fazendo login do usuário
+    public Optional<UsuarioLogin> logar(Optional<UsuarioLogin> usuarioLogin) {
+        // vamos trabalhar a senha encriptada apartir do BCryptPasswordEncoder da classe BasicSecurityConfig
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    }
+
+
 }

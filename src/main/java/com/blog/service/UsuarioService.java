@@ -34,6 +34,9 @@ public class UsuarioService {
     public Optional<UsuarioLogin> logar(Optional<UsuarioLogin> usuarioLogin) {
         // vamos trabalhar a senha encriptada apartir do BCryptPasswordEncoder da classe BasicSecurityConfig
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+        // Acessando o usuário que contém aquela senha à ser verificada pelo nome de usuário
+        Optional<Usuario> usuario = usuarioRepository.findByUsuario(usuarioLogin.get().getUsuario());
     }
 
 

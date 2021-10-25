@@ -1,5 +1,6 @@
 package com.blog.controller;
 
+import com.blog.model.Usuario;
 import com.blog.model.UsuarioLogin;
 import com.blog.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,12 @@ public class UsuarioController {
         return usuarioService.logar(usuarioLogin)
                 .map(resp -> ResponseEntity.ok(resp))
                 .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+    }
+
+    @PostMapping("cadastrar")
+    public ResponseEntity<Usuario> post(@RequestBody Usuario usuario) {
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(usuarioService.cadastrarUsuario(usuario));
     }
 }
